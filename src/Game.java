@@ -8,7 +8,7 @@ public class Game {
     View window;
     Circle ball;
     Rectangle player, block;
-    Text scoreText;
+    Text scoreText, gameOverText;
     Rectangle[] borders;
     Rectangle borderUp;
 
@@ -116,11 +116,12 @@ public class Game {
             }
 
             if (ball.getCenterY() > 710) {
+                gameOverText = new Text(450, 340, "Game Over!", Color.RED);
                 gameOver = true;
             }
 
             if (blocks.size() < 1) {
-                System.out.println("ENDE!!!");
+                gameOverText = new Text(450, 340, "Fertig!");
             }
         }
     }
