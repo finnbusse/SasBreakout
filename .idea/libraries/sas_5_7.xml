@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="sas.5.7">
     <CLASSES>
-      <root url="jar://G:/Kurs-EF IF-GK2/sas.5.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/sas.5.7.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
