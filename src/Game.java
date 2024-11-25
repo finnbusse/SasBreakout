@@ -1,11 +1,15 @@
 import sas.*;
+import java.util.ArrayList;
 
 public class Game {
 
     View window;
     Circle ball;
     Rectangle player;
+    Text scoreText;
     Rectangle[] borders;
+
+    ArrayList<Item> blocks;
 
     int score;
 
@@ -61,5 +65,16 @@ public class Game {
 
 
         }
+    }
+}
+
+class Item {
+
+    Rectangle block;
+
+    double x, y, width, height;
+
+    public Item (double x, double y, double width, double height) {
+        block = new Rectangle(x, y, 75, 50);
     }
 }
