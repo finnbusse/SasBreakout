@@ -1,4 +1,3 @@
-import org.w3c.dom.css.Rect;
 import sas.*;
 import java.awt.Color;
 import java.util.ArrayList;
