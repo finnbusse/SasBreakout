@@ -6,7 +6,7 @@ public class Game {
 
     View window;
     Circle ball;
-    Rectangle player, block;
+    Rectangle player;
     Text scoreText, gameOverText;
     Rectangle[] borders;
     Rectangle borderUp;
@@ -66,7 +66,7 @@ public class Game {
 
         while (!gameOver) {
 
-            window.wait(2);
+            window.wait(1);
             ball.move(speed);
 
             if (ball.intersects(player)) {
@@ -119,8 +119,9 @@ public class Game {
                 gameOver = true;
             }
 
-            if (blocks.size() < 1) {
+            if (blocks.isEmpty()) {
                 gameOverText = new Text(450, 340, "Fertig!");
+                gameOver = true;
             }
         }
     }
