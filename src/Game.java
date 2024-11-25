@@ -120,7 +120,7 @@ public class Game {
             }
 
             if (blocks.isEmpty()) {
-                gameOverText = new Text(450, 340, "Fertig!");
+                gameOverText = new Text(450, 340, "Fertig!", Color.GREEN);
                 gameOver = true;
             }
         }
