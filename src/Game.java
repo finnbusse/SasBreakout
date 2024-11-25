@@ -10,6 +10,7 @@ public class Game {
     Rectangle player, block;
     Text scoreText;
     Rectangle[] borders;
+    Rectangle borderUp;
 
     ArrayList<Block> blocks;
 
@@ -31,9 +32,10 @@ public class Game {
 
         borders = new Rectangle[] {
                 new Rectangle(0, 0, 5, 730),
-                new Rectangle(0, 0, 1000, 5),
                 new Rectangle(995, 0, 5, 730)
         };
+
+        borderUp = new Rectangle(0, 0, 1000, 5);
 
         scoreText = new Text(450, 700, "Punktestand: " + score);
 
@@ -76,17 +78,27 @@ public class Game {
 
             for (Rectangle border : borders) {
                 if (ball.intersects(border)) {
-                    speed = -speed;
-                    direction = direction - 90;
-                    ball.move(-1);
+                    direction = 360 - direction;
                     ball.setDirection(direction);
+
+                    while (ball.intersects(border)) {
+                        ball.move(speed * 2);
+                    }
                 }
+            }
+
+            if (ball.intersects(borderUp)) {
+                direction = direction + 270;
+                ball.setDirection(direction);
+
+                ball.move(speed * 2);
             }
 
             for (int i = 0; i < blocks.size(); i++) {
                 Block block = blocks.get(i);
                 if (ball.intersects(block.getBlock())) {
                     block.getBlock().setHidden(true);
+                    blocks.remove(i);
                     speed = -speed;
                     direction = 360 - direction;
                     ball.setDirection(direction);
@@ -95,16 +107,20 @@ public class Game {
                 }
             }
 
-            if (window.keyPressed('a')) {
+            if (window.keyPressed('a') || window.keyLeftPressed()) {
                 player.move(-1.2, 0);
             }
 
-            if (window.keyPressed('d')) {
+            if (window.keyPressed('d') || window.keyRightPressed()) {
                 player.move(1.2, 0);
             }
 
             if (ball.getCenterY() > 710) {
                 gameOver = true;
+            }
+
+            if (blocks.size() < 1) {
+                System.out.println("ENDE!!!");
             }
         }
     }
