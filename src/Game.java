@@ -26,7 +26,7 @@ public class Game {
 
         window = new View(1000,730, "Breakout");
 
-        player = new Rectangle(370, 650, 250, 25);
+        player = new Rectangle(400, 650, 200, 20);
         ball = new Circle(480, 500, 10);
 
         borders = new Rectangle[] {
@@ -40,19 +40,22 @@ public class Game {
 
         blocks = new ArrayList<>();
 
-        for (int i = 0; i < 9; i++) {
-            blocks.add(new Block(i * 105 + 30, 15));
-            blocks.add(new Block(i * 105 + 30, 70));
-            blocks.add(new Block(i * 105 + 30, 125));
-            blocks.add(new Block(i * 105 + 30, 180));
-            blocks.add(new Block(i * 105 + 30, 235));
-            blocks.add(new Block(i * 105 + 30, 290));
+        for (int i = 0; i < 12; i++) {
+            blocks.add(new Block(i * 80 + 22, 15));
+            blocks.add(new Block(i * 80 + 22, 60));
+            blocks.add(new Block(i * 80 + 22, 105));
+            blocks.add(new Block(i * 80 + 22, 150));
+            blocks.add(new Block(i * 80 + 22, 195));
+            blocks.add(new Block(i * 80 + 22, 240));
+            blocks.add(new Block(i * 80 + 22, 285));
+            blocks.add(new Block(i * 80 + 22, 330));
+            blocks.add(new Block(i * 80 + 22, 375));
         }
 
         gameOver = false;
 
         directionRandomizer = Tools.randomNumber(-15, 15);
-        direction = 135 + directionRandomizer;
+        direction = 145 + directionRandomizer;
 
         speed = 1;
         score = 0;
@@ -132,7 +135,7 @@ class Block {
     Rectangle newBlock;
 
     public Block (int x, int y) {
-        newBlock = new Rectangle(x, y, 100, 50);
+        newBlock = new Rectangle(x, y, 75, 40);
     }
 
     public Rectangle getBlock() {
